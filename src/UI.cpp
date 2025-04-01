@@ -30,10 +30,11 @@ bool ArabicCache::CreateAndRender(const std::string& inText)
 	hb_font_t*		hbFont		= hb_ft_font_create(g.mArabicFace, NULL);
 	hb_buffer_t*	hbBuffer	= hb_buffer_create();
 
-	u32 numCodepoints = 0;
-	u32* codepoints = Unicode::GetCodePoints((u8*)inText.c_str(), inText.size(), &numCodepoints);
+	//u32 numCodepoints = 0;
+	//u32* codepoints = Unicode::GetCodePoints((u8*)inText.c_str(), inText.size(), &numCodepoints);
 
-	hb_buffer_add_codepoints(hbBuffer, codepoints, numCodepoints, 0, -1);
+	//hb_buffer_add_codepoints(hbBuffer, codepoints, numCodepoints, 0, -1);
+	hb_buffer_add_utf8(hbBuffer, inText.c_str(), -1, 0, -1);
 	hb_buffer_set_direction(hbBuffer, HB_DIRECTION_RTL);
 	hb_buffer_set_script(hbBuffer, HB_SCRIPT_ARABIC);
 	hb_buffer_set_language(hbBuffer, hb_language_from_string("ar", -1));
