@@ -1,8 +1,17 @@
 # GL-Renderer
 Very basic OpenGL Renderer.
 
-## Screen Shots
+## Feature List
+* Deferred Shading
+* HDR & Auto Exposure
+* Physically Based Bloom
+* FXAA
+* CSM
+* SSAO
+* English Text Rendering
+* Arabic Text Rendering
 
+## Screen Shots
 ### Final screen shot
 ![Final screen hot](https://github.com/user-attachments/assets/33c53460-923d-4ece-baf4-72a8319423fa)
 
