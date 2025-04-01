@@ -518,6 +518,8 @@ void Renderer::BeginUI()
 
 void Renderer::Render(f32 inDeltaTime, f32 inCurrentTime)
 {
+	glDisable(GL_BLEND);
+
 	{ // render geometry data to g-buffer
 		GL_ZONE("Render G-Buffer");
 		ZoneScopedN("Render G-Buffer");

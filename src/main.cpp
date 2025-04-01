@@ -183,7 +183,7 @@ i32 main(void)
 			gUiMgr.UpdateProjection(gWindowWidth, gWindowHeight);
 			//gUiMgr.RenderEnglish("Hello, world!", glm::vec2(100.0f, 300.0f), 1.0f, glm::vec3(1.0f));
 			//gUiMgr.RenderArabic(u8"السلام عليكم", glm::vec2(400.0f, 300.0f), 1.0f, glm::vec3(1.0f));
-			gUiMgr.RenderArabicCached(cache, glm::vec2(400.0f, 300.0f), 1.0f, glm::vec3(1.0f));
+			//gUiMgr.RenderArabicCached(cache, glm::vec2(400.0f, 300.0f), 1.0f, glm::vec3(1.0f));
 			GL_ZONE_END();
 		}
 

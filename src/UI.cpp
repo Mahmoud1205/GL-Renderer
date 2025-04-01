@@ -351,7 +351,7 @@ void UI::RenderArabicCached(const ArabicCache& inCache, glm::vec2 inPos, f32 inS
 	ZoneScopedN("Render Arabic (Cached)");
 
 	g.mShader.Use();
-	g.mShader.SetVec3("uTint", glm::vec3(0.0f, 1.0f, 0.0f));
+	g.mShader.SetVec3("uTint", inColor);
 
 	f32 w = (f32)inCache.mWidth;
 	f32 h = (f32)inCache.mHeight;
