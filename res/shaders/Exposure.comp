@@ -1,0 +1,39 @@
+#version 460 core
+
+/**
+ * exposure is calculated on the GPU compute so that the data
+ * doesnt do GPU->CPU->GPU (Luma.comp -> CPU -> PostFX.frag), instead
+ * GPU->GPU->GPU (Luma.comp -> Exposure.comp -> PostFX.frag).
+ *
+ * this shader must be dispatched only one work group
+ */
+
+#include "Utils.glsl"
+
+layout (local_size_x = 1, local_size_y = 1, local_size_z = 1) in;
+
+uniform vec2	uScreenSize;
+uniform float	uDeltaTime;
+layout (binding = 0, std430) buffer	Luma {
+	uint	TotalLuma;			// sum of all pixels's luma
+	float	DesiredExposure;	// the exposure we desire based on the current scene luma
+	float	Exposure;			// the shader output
+};
+
+#define MIN_EXPOSURE (0.008)
+#define MAX_EXPOSURE (1.4)
+
+float InvertRange(float val, float rangeStart, float rangeEnd);
+
+void main()
+{
+	float avgLuma = float(TotalLuma) / (uScreenSize.x * uScreenSize.y);
+	avgLuma /= 255.0;
+
+	DesiredExposure = log2(avgLuma / 0.18);
+	DesiredExposure = clamp(DesiredExposure, MIN_EXPOSURE, MAX_EXPOSURE);
+	DesiredExposure = InvertRange(DesiredExposure, MIN_EXPOSURE, MAX_EXPOSURE);
+
+	Exposure = mix(Exposure, DesiredExposure, 2.5 * uDeltaTime);
+	Exposure = clamp(Exposure, MIN_EXPOSURE, MAX_EXPOSURE);
+}

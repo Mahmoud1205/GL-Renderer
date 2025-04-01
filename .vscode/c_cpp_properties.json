@@ -1,0 +1,31 @@
+{
+	"configurations": [
+		{
+			"name": "Win32",
+			"includePath": [
+				"${workspaceFolder}/include/Shared",
+				"${workspaceFolder}/include/Shared/imgui",
+				"${workspaceFolder}/include/Debug",
+				"${workspaceFolder}/include/Shared/tracy"
+			],
+			"defines": [
+				"_DEBUG",
+				"TRACY_ENABLE",
+				"ZR_DEBUG",
+				"JPH_PROFILE_ENABLED",
+				"JPH_DEBUG_RENDERER",
+				"_WIN32_WINNT=_WIN32_WINNT_WIN10",
+				"_LIBCPP_DEBUG=1",
+				"_ITERATOR_DEBUG_LEVEL=2",
+				"UNICODE",
+				"_UNICODE"
+			],
+			"windowsSdkVersion": "10.0.22621.0",
+			"cStandard": "c11",
+			"compilerPath": "C:\\Program Files\\clang-llvm\\bin\\clang.exe",
+			"cppStandard": "c++17",
+			"intelliSenseMode": "clang-x64"
+		}
+	],
+	"version": 4
+}

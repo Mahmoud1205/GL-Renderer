@@ -1,0 +1,10 @@
+bin
+build
+include
+lib
+res/*
+!res/shaders
+*.ini
+vtune
+*.tga
+.vscode/settings.json

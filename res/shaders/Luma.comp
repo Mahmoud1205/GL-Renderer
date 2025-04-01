@@ -1,0 +1,19 @@
+#version 460 core
+
+layout (local_size_x = 1, local_size_y = 1, local_size_z = 1) in;
+
+layout (binding = 0) uniform sampler2D uTexture;
+layout (binding = 1, std430) buffer	Luma {
+	uint	TotalLuma;			// output by this shader
+	float	DesiredExposure;	// not used by this shader
+	float	Exposure;			// not used by this shader
+};
+
+void main()
+{
+	vec2 UV = vec2(gl_GlobalInvocationID.xy) / textureSize(uTexture, 0);
+
+	float luma = texture(uTexture, UV).g;
+	uint lumaUint = uint(luma * 255.0);
+	atomicAdd(TotalLuma, lumaUint);
+}
