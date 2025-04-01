@@ -18,7 +18,7 @@ layout (binding = 3) uniform sampler2D uTextureNormal;
 void main()
 {
 	gAlbedo.rgb	= texture(uTextureDiffuse, UV).rgb;
-	gSpecular	= vec4(texture(uTextureSpecular, UV).r, 1.0, 1.0, 1.0);
+	gSpecular	= vec4(texture(uTextureSpecular, UV).rgb, 1.0);
 	// depth values are in gPosition.a
 	gPosition	= vec4(FragPos, gl_FragCoord.z);
 
